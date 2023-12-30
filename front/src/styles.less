@@ -1,0 +1,114 @@
+@import "./colors.less";
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: @background-light;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+p,
+a {
+  font-family: "Roboto Condensed", sans-serif;
+  color: @text-dark;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+a {
+  color: @primary;
+  text-decoration: none;
+  font-weight: 600;
+
+  &:hover {
+    color: @secondary;
+  }
+}
+
+button {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: @text-light;
+
+  background-color: @primary;
+  border: none;
+  border-radius: 0.25rem;
+
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: @secondary;
+  }
+
+  &:disabled {
+    background-color: @background-muted;
+    cursor: not-allowed;
+  }
+}
+
+[ghost-button] {
+  background-color: transparent;
+  border: none;
+  color: @primary;
+
+  &:hover {
+    background-color: transparent;
+    color: @secondary;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    color: @text-muted;
+    cursor: not-allowed;
+  }
+}
+
+input,
+textarea {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1rem;
+  color: @text-dark;
+
+  background-color: @background-light;
+  border: 1px solid #e7e5df;
+  border-radius: 0.25rem;
+
+  padding: 0.5rem 1rem;
+  cursor: text;
+
+  transition: all 0.2s ease-in-out;
+
+  &:focus {
+    background-color: @background-light;
+  }
+
+  &:disabled {
+    color: @text-muted;
+    background-color: @background-muted;
+    cursor: not-allowed;
+  }
+}
