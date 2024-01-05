@@ -1,11 +1,12 @@
-import { ILoginUserRequest, ILoginUserResponse } from "@DTO/user";
-import { invalidCredentials } from "@lib/api-error";
-import { LodgeRepository } from "@repositories/lodge-repository";
-import { UserRepository } from "@repositories/user-repository";
 import { compare } from "bcrypt";
+import { inject, injectable } from "tsyringe";
+
 import { env } from "env";
 import { sign } from "jsonwebtoken";
-import { inject, injectable } from "tsyringe";
+import { invalidCredentials, notFound } from "@lib/api-error";
+import { UserRepository } from "@repositories/user-repository";
+import { LodgeRepository } from "@repositories/lodge-repository";
+import { ILoginUserRequest, ILoginUserResponse } from "@DTO/user";
 
 @injectable()
 export class LoginUserUseCase {
@@ -33,12 +34,14 @@ export class LoginUserUseCase {
 
     const lodgeInfos = await this.lodgeRepository.findById(user.lodgeId);
 
+    if (!lodgeInfos) throw new notFound('Loja');
+
     return {
       id: user.id,
       name: user.name,
       token,
       lodge: {
-        name: lodgeInfos?.name
+        name: lodgeInfos.name
       }
     }
   }

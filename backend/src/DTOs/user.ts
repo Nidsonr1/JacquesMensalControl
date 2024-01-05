@@ -1,6 +1,3 @@
-import { Lodge } from "entities/lodge";
-import { User } from "entities/user";
-
 export interface IRegisterUserRequest {
   name: string;
   email: string;
@@ -39,6 +36,6 @@ export interface ILoginUserResponse {
   name: string;
   token: string;
   lodge: {
-    name: string | undefined
+    name: string;
   } 
 }
