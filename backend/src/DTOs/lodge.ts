@@ -1,3 +1,5 @@
 export interface IRegisterLodgeRequest {
-  name: string
+  name: string;
+  colors: string[];
+  logo: string;
 }

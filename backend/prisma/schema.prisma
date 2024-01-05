@@ -13,6 +13,8 @@ datasource db {
 model Lodges {
   id        String   @id @default(uuid())
   name      String
+  colors    String[]
+  logo      String
   createdAt DateTime @default(now())
 
   users Users[]

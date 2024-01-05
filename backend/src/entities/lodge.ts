@@ -4,6 +4,8 @@ import { randomUUID } from "crypto";
 
 export interface LodgesProps {
   name: string;
+  colors: string[];
+  logo: string;
   createdAt: Date;
 }
 
@@ -29,6 +31,22 @@ export class Lodge {
 
   public get name(): string {
     return this.props.name
+  }
+
+  public set colors(colors: string[]) {
+    this.props.colors = colors
+  }
+
+  public get colors(): string[] {
+    return this.props.colors
+  }
+
+  public set logo(logo: string) {
+    this.props.logo = logo
+  }
+
+  public get logo(): string {
+    return this.props.logo
   }
   
   public get createdAt(): Date {
