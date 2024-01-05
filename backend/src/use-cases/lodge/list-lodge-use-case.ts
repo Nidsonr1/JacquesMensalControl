@@ -1,8 +1,8 @@
 import { inject, injectable } from "tsyringe";
 
-import { Lodge } from "entities/lodge";
 import { LodgeRepository } from "@repositories/lodge-repository";
 import { notFound } from "@lib/api-error";
+import { IListLodgeResponse } from "@DTO/lodge";
 
 @injectable()
 export class ListLodgeUseCase {
@@ -11,13 +11,18 @@ export class ListLodgeUseCase {
     private lodgeRepository: LodgeRepository
   ) {}
 
-  async execute(): Promise<Lodge[] | null> {
+  async execute(): Promise<IListLodgeResponse[]> {
     const lodges = await this.lodgeRepository.list();
+    
+    if (!lodges) throw new notFound('Loja');
+    
+    const result = lodges.map((lodge) => {
+      return {
+        id: lodge.id,
+        name: lodge.name,
+      }
+    });
 
-    if (lodges?.length == 0) {
-      throw new notFound('Loja')
-    }
-
-    return lodges;
+    return result
   } 
 }
