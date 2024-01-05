@@ -21,8 +21,14 @@ export class PrismaLodgeRepository implements LodgeRepository {
 
     return lodge ? PrismaLodgeMapper.toDomain(lodge) : null
   }
-  findById(id: string): Promise<Lodge | null> {
-    throw new Error("Method not implemented.");
+  async findById(id: string): Promise<Lodge | null> {
+    const lodge = await prisma.lodges.findFirst({
+      where: {
+        id
+      }
+    });
+
+    return lodge ? PrismaLodgeMapper.toDomain(lodge) : null
   }
   async list(): Promise<Lodge[] | null> {
     const lodges = await prisma.lodges.findMany();

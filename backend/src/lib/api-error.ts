@@ -18,3 +18,9 @@ export class notFound extends ApiErrors {
 		super(`${name} não encontrado(a)!`, 404);
 	}
 }
+
+export class invalidCredentials extends ApiErrors {
+	constructor() {
+		super('Login ou senha inválidos!', 404);
+	}
+}
