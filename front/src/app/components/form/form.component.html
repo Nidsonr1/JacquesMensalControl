@@ -1,0 +1,163 @@
+<div class="formComponent">
+  <form [formGroup]="formFields" class="formComponent-form">
+    <!-- Input -->
+    <div *ngFor="let field of formConfig.fields">
+      <!-- Type: text -->
+      <div input-group *ngIf="field.type === 'text' || field.type === 'number'">
+        <label
+          >{{ field.label }}<span *ngIf="field.required" isRequired> *</span>
+        </label>
+        <div
+          [ngClass]="{
+            'input-with-error': field.error
+          }"
+        >
+          <input
+            (keyup)="returnError(field.key, field.type)"
+            type="text"
+            [mask]="field.mask"
+            [showMaskTyped]="field.showMask ? field.showMask : false"
+            [id]="field.key"
+            [name]="field.key"
+            [formControlName]="field.key"
+          />
+          <p>{{ field.error }}</p>
+        </div>
+      </div>
+
+      <!-- Type: email -->
+      <div input-group *ngIf="field.type === 'email'">
+        <label
+          >{{ field.label }}<span *ngIf="field.required" isRequired> *</span>
+        </label>
+        <div
+          [ngClass]="{
+            'input-with-error': field.error
+          }"
+        >
+          <input
+            (keyup)="returnError(field.key, field.type)"
+            type="email"
+            [id]="field.key"
+            [name]="field.key"
+            [formControlName]="field.key"
+          />
+          <p>{{ field.error }}</p>
+        </div>
+      </div>
+
+      <!-- Type: Textarea -->
+      <div input-group *ngIf="field.type === 'textarea'">
+        <label
+          >{{ field.label }}<span *ngIf="field.required" isRequired> *</span>
+        </label>
+        <div
+          [ngClass]="{
+            'input-with-error': field.error
+          }"
+        >
+          <textarea
+            (keyup)="returnError(field.key)"
+            [id]="field.key"
+            [name]="field.key"
+            [formControlName]="field.key"
+          ></textarea>
+          <p>{{ field.error }}</p>
+        </div>
+      </div>
+
+      <!-- Type: password -->
+      <div input-group *ngIf="field.type === 'password'">
+        <label
+          >{{ field.label }}<span *ngIf="field.required" isRequired> *</span>
+        </label>
+        <div
+          [ngClass]="{
+            'input-with-error': field.error
+          }"
+        >
+          <div input-with-icon>
+            <input
+              (keyup)="returnError(field.key)"
+              type="password"
+              [id]="field.key"
+              [name]="field.key"
+              [formControlName]="field.key"
+            />
+            <a (click)="changePasswordVisibility(field.key)">
+              <span class="material-symbols-outlined"> visibility </span>
+            </a>
+          </div>
+          <p>{{ field.error }}</p>
+        </div>
+      </div>
+
+      <!-- Type: select -->
+      <div input-group *ngIf="field.type === 'select'">
+        <label
+          >{{ field.label }}<span *ngIf="field.required" isRequired> *</span>
+        </label>
+        <div
+          [ngClass]="{
+            'input-with-error': field.error
+          }"
+        >
+          <select
+            (keyup)="returnError(field.key)"
+            [id]="field.key"
+            [name]="field.key"
+            [formControlName]="field.key"
+          >
+            <option *ngFor="let option of field.options" [value]="option.value">
+              {{ option.label }}
+            </option>
+          </select>
+          <p>{{ field.error }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer: -->
+    <footer *ngIf="formConfig.footer">
+      <div
+        *ngFor="let footer of formConfig.footer"
+        class="formComponent-form-footer"
+        [ngClass]="{
+        'footer-with-full-width': footer.fullWidth,
+        'footer-with-two-columns': footer.twoColumns,
+        }"
+      >
+        <div *ngFor="let button of footer.actions">
+          <div *ngIf="button.type === 'ghost'">
+            <button ghost-button type="button" (click)="button.function()">
+              {{ button.label }}
+            </button>
+          </div>
+
+          <div *ngIf="button.type === 'button'">
+            <button primary-button type="button" (click)="button.function()">
+              {{ button.label }}
+            </button>
+          </div>
+
+          <div *ngIf="button.type === 'clear'">
+            <button primary-button type="button" (click)="button.function()">
+              <span class="material-symbols-outlined"> restart_alt </span>
+            </button>
+          </div>
+
+          <div *ngIf="button.type === 'submit'">
+            <button
+              primary-button
+              type="submit"
+              (click)="returnForm()"
+              [disabled]="this.formFields.invalid"
+            >
+              {{ button.label }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </form>
+</div>

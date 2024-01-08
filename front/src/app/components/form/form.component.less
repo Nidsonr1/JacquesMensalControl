@@ -1,0 +1,53 @@
+@import "../standards.less";
+
+.formComponent {
+  &-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+
+    .input-with-error {
+      input,
+      textarea,
+      select {
+        border: 1px solid @error-red;
+      }
+
+      p {
+        margin-top: 0.2rem;
+        font-size: 0.8rem;
+        color: @error-red;
+      }
+    }
+
+    &-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-with-full-width {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 1rem;
+
+      button {
+        width: 100%;
+      }
+    }
+
+    .footer-with-two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1rem;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+[isRequired] {
+  color: @error-red;
+}
