@@ -7,6 +7,7 @@ import { invalidCredentials, notFound } from "@lib/api-error";
 import { UserRepository } from "@repositories/user-repository";
 import { LodgeRepository } from "@repositories/lodge-repository";
 import { ILoginUserRequest, ILoginUserResponse } from "@DTO/user";
+import { RoleRepository } from "@repositories/role-repository";
 
 @injectable()
 export class LoginUserUseCase {
@@ -15,7 +16,10 @@ export class LoginUserUseCase {
     private userRepository: UserRepository,
 
     @inject("LodgeRepository")
-    private lodgeRepository: LodgeRepository
+    private lodgeRepository: LodgeRepository,
+
+    @inject('RoleRepository')
+    private roleRepository: RoleRepository
   ) {}
 
   async execute({ cim, password }: ILoginUserRequest): Promise<ILoginUserResponse> {
@@ -33,15 +37,22 @@ export class LoginUserUseCase {
     });
 
     const lodgeInfos = await this.lodgeRepository.findById(user.lodgeId);
+    const roleInfos = await this.roleRepository.findById(user.roleId);
 
     if (!lodgeInfos) throw new notFound('Loja');
+    if (!roleInfos) throw new notFound('Role');
 
     return {
       id: user.id,
       name: user.name,
       token,
       lodge: {
-        name: lodgeInfos.name
+        name: lodgeInfos.name,
+        colors: lodgeInfos.colors,
+        logo: lodgeInfos.logo
+      },
+      role: {
+        name: roleInfos.name,
       }
     }
   }

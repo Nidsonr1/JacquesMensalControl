@@ -3,7 +3,7 @@ export interface IRegisterUserRequest {
   email: string;
   cim: string;
   lodgeId: string;
-  roleId: string;
+  roleId: string | null;
   phone: string;
 }
 
@@ -37,5 +37,10 @@ export interface ILoginUserResponse {
   token: string;
   lodge: {
     name: string;
-  } 
+    colors: string[];
+    logo: string;
+  },
+  role: {
+    name: string;
+  }
 }

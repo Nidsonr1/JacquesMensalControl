@@ -15,12 +15,12 @@ export class RegisterUserUseCase {
 
   async execute(data: IRegisterUserRequest): Promise<IRegisterUserResponse> {
     const userExist = await this.userRepository.findByCim(data.cim);
-    console.log(userExist)
-    // if(userExist) throw new alreadyRegistred('Usuário');
 
-    const [name, secondName] = data.name.split(" ")
+    if(userExist) throw new alreadyRegistred('Usuário');
 
-    const password = `${name}${secondName}${data.cim}`
+    const [name] = data.name.split(" ")
+
+    const password = `${name}${data.cim}`
 
     const passwordHash = await hash(password, 10);
 
@@ -29,7 +29,7 @@ export class RegisterUserUseCase {
       password: passwordHash
     });
 
-    // await this.userRepository.create(newUser);
+    await this.userRepository.create(newUser);
 
     return {
       name: data.name,

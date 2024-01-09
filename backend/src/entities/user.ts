@@ -8,7 +8,7 @@ export interface UsersProps {
   cim: string;
   phone: string;
   lodgeId: string;
-  roleId: string;
+  roleId: string | null;
   createdAt: Date;
 }
 
@@ -19,7 +19,7 @@ export class User {
   constructor(props: Replace<UsersProps, {
     createdAt?: Date, 
     lodgeId: string, 
-    roleId: string
+    roleId: string | null
   }>, id?: string) {
     this._id = id ?? randomUUID();
     this.props = {
@@ -82,7 +82,7 @@ export class User {
     return this.props.lodgeId
   }
 
-  public get roleId(): string {
+  public get roleId(): string | null {
     return this.props.roleId
   }
 }
