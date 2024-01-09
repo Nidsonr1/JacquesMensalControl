@@ -1,0 +1,69 @@
+@import "../components/standards.less";
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+
+  &-sidebar {
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 1.5rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    &-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+
+      &-user {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+          width: 5rem;
+          height: 5rem;
+          border-radius: 50%;
+          object-fit: cover;
+
+          box-shadow: @shadow-light;
+        }
+      }
+
+      &-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    footer {
+      p {
+        font-size: 0.8rem;
+        color: @text-muted;
+      }
+    }
+  }
+
+  &-page {
+    padding: 1.5rem;
+
+    &-content {
+      box-sizing: border-box;
+      padding: 1rem;
+      min-height: 100%;
+      max-height: 100%;
+
+      border-radius: @border-radius;
+      background-color: @background-light;
+      box-shadow: @shadow-dark;
+    }
+  }
+}
