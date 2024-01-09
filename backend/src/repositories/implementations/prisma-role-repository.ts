@@ -23,4 +23,14 @@ export class PrismaRoleRepository implements RoleRepository {
 
     return role ? PrismaRoleMapper.toDomain(role) : null;
   }
+
+  async findById(id: string): Promise<Role | null> {
+    const role = await prisma.roles.findFirst({
+      where: {
+        id
+      }
+    });
+
+    return role ? PrismaRoleMapper.toDomain(role) : null;
+  }
 }

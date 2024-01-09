@@ -2,9 +2,6 @@ import { PrismaUserMapper } from "@repositories/mappers/prisma-user-mappers";
 import { UserRepository } from "@repositories/user-repository";
 import { User } from "entities/user";
 import { prisma } from "@lib/prisma";
-import { ILoginUserRequest } from "@DTO/user";
-
-
 
 export class PrismaUserRepository implements UserRepository {
   async create(data: User): Promise<void> {
