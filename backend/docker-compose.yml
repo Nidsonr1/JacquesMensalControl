@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  jacquesMensalControl-pg:
+    image: bitnami/postgresql
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    environment:
+      - POSTGRESQL_USERNAME=${DB_USERNAME}
+      - POSTGRESQL_PASSWORD=${DB_PASSWORD}
+      - POSTGRESQL_DATABASE=${DB_DATABASE}
