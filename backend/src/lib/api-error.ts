@@ -24,3 +24,15 @@ export class invalidCredentials extends ApiErrors {
 		super('Login ou senha inválidos!', 404);
 	}
 }
+
+export class unauthenticated extends ApiErrors {
+	constructor() {
+		super('Usuário não autenticado!', 401);
+	}
+}
+
+export class forbiden extends ApiErrors {
+	constructor() {
+		super('Usuário não possui permissão', 403)
+	}
+}
