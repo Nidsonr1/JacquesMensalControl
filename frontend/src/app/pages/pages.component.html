@@ -1,0 +1,50 @@
+<div class="main">
+  <div class="main-sidebar">
+    <div class="main-sidebar-header">
+      <div class="main-sidebar-header-user">
+        <img src="assets/png/mason_icon.png" />
+        <h3>Madalena Stéfane</h3>
+        <p>Jacques Mensal Control</p>
+      </div>
+
+      <div class="main-sidebar-header-menu">
+        <button big-button ghost-button>
+          <span class="material-symbols-outlined"> savings </span>
+          <span>Mensalidades</span>
+        </button>
+        <button big-button ghost-button>
+          <span class="material-symbols-outlined"> event_note </span>
+          <span>Eventos</span>
+        </button>
+        <button big-button ghost-button (click)="changePage('cadastro-irmão')">
+          <span class="material-symbols-outlined"> person_add </span>
+          <span>Cadastro irmão</span>
+        </button>
+        <button big-button ghost-button (click)="changePage('cadastro-loja')">
+          <span class="material-symbols-outlined"> add_home </span>
+          <span>Cadastro de loja</span>
+        </button>
+        <button big-button ghost-button>
+          <span class="material-symbols-outlined"> manage_accounts </span>
+          <span>Gerenciar conta</span>
+        </button>
+        <button big-button ghost-button>
+          <span class="material-symbols-outlined"> power_settings_new </span>
+          <span>Sair</span>
+        </button>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2023 - Madalena Campos e Nidson Campos</p>
+      <p>Todos os direitos reservados</p>
+      <p>Versão 1.0.0</p>
+    </footer>
+  </div>
+
+  <div class="main-page">
+    <div class="main-page-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
