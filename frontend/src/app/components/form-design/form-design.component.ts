@@ -2,12 +2,12 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-export interface FormConfig {
+export interface FormDesignConfig {
   fields: FormField[];
   footer?: FormFooter[];
 }
 
-export interface FormField {
+interface FormField {
   label: string;
   key: string;
   type: 'text' | 'textarea' | 'number' | 'password' | 'email' | 'select';
@@ -22,18 +22,18 @@ export interface FormField {
   options?: FormFieldOption[];
 }
 
-export interface FormFieldOption {
+interface FormFieldOption {
   label: string;
   value: string;
 }
 
-export interface FormFooter {
+interface FormFooter {
   fullWidth?: boolean;
   twoColumns?: boolean;
   actions: Action[];
 }
 
-export interface Action {
+interface Action {
   label: string;
   type: 'ghost' | 'button' | 'clear' | 'submit';
   disabled?: boolean;
@@ -41,16 +41,16 @@ export interface Action {
 }
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.less',
+  selector: 'jmc-form-design',
+  templateUrl: './form-design.component.html',
+  styleUrl: './form-design.component.less',
 })
-export class FormComponent implements OnInit {
+export class FormDesignComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {
     this.formFields = this.formBuilder.group({});
   }
 
-  @Input() formConfig!: FormConfig;
+  @Input() formConfig!: FormDesignConfig;
   @Output() formEventToSubmit = new EventEmitter<string>();
 
   public formFields!: FormGroup;
