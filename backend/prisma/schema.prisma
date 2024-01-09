@@ -29,11 +29,11 @@ model Users {
   phone     String
   createdAt DateTime @default(now())
 
-  Lodges   Lodges @relation(fields: [lodgesId], references: [id])
-  lodgesId String
+  Lodges  Lodges @relation(fields: [lodgeId], references: [id])
+  lodgeId String
 
-  Roles  Roles  @relation(fields: [roleId], references: [id])
-  roleId String
+  Roles  Roles?  @relation(fields: [roleId], references: [id])
+  roleId String?
 }
 
 model Roles {

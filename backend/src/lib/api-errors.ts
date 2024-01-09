@@ -24,3 +24,9 @@ export class AlreadyExist extends ApiErrors {
     super(`${name} já cadastrado(a)!`, 400)
   }
 }
+
+export class NotFound extends ApiErrors {
+  constructor(name: string) {
+    super(`${name} não encontrado`, 404)
+  }
+}
