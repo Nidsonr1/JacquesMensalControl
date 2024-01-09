@@ -1,4 +1,4 @@
-@import "./colors.less";
+@import "../src/app/components/standards.less";
 
 body {
   -webkit-font-smoothing: antialiased;
@@ -6,6 +6,10 @@ body {
   background-color: @background-light;
   margin: 0;
   padding: 0;
+
+  :focus {
+    outline: none;
+  }
 }
 
 h1,
@@ -36,6 +40,7 @@ p {
 }
 
 a {
+  cursor: pointer;
   color: @primary;
   text-decoration: none;
   font-weight: 600;
@@ -53,7 +58,7 @@ button {
 
   background-color: @primary;
   border: none;
-  border-radius: 0.25rem;
+  border-radius: @border-radius;
 
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -65,7 +70,7 @@ button {
   }
 
   &:disabled {
-    background-color: @background-muted;
+    background-color: @background-disabled;
     cursor: not-allowed;
   }
 }
@@ -82,23 +87,33 @@ button {
 
   &:disabled {
     background-color: transparent;
-    color: @text-muted;
+    color: @background-disabled;
     cursor: not-allowed;
   }
 }
 
+[big-button] {
+  width: 100%;
+}
+
+label {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1rem;
+  color: @text-dark;
+}
+
 input,
 textarea {
+  width: -webkit-fill-available;
   font-family: "Roboto Condensed", sans-serif;
   font-size: 1rem;
   color: @text-dark;
 
   background-color: @background-light;
   border: 1px solid #e7e5df;
-  border-radius: 0.25rem;
+  border-radius: @border-radius;
 
   padding: 0.5rem 1rem;
-  cursor: text;
 
   transition: all 0.2s ease-in-out;
 
@@ -110,5 +125,54 @@ textarea {
     color: @text-muted;
     background-color: @background-muted;
     cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: @text-muted;
+  }
+}
+
+select {
+  width: -webkit-fill-available;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1rem;
+  color: @text-dark;
+
+  background-color: @background-light;
+  border: 1px solid #e7e5df;
+  border-radius: @border-radius;
+
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+
+  transition: all 0.2s ease-in-out;
+
+  &:focus {
+    background-color: @background-light;
+  }
+
+  &:disabled {
+    color: @text-muted;
+    background-color: @background-muted;
+    cursor: not-allowed;
+  }
+}
+
+[input-group] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+[input-with-icon] {
+  a {
+    position: absolute;
+    margin-left: -2.2rem;
+    margin-top: 0.5rem;
+
+    span {
+      font-size: 20px;
+      color: @text-muted;
+    }
   }
 }

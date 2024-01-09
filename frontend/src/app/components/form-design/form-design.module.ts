@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { FormComponent } from './form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { FormDesignComponent } from './form-design.component';
+
 import {
   NgxMaskDirective,
   NgxMaskPipe,
@@ -10,7 +11,8 @@ import {
 } from 'ngx-mask';
 
 @NgModule({
-  declarations: [FormComponent],
+  declarations: [FormDesignComponent],
+  exports: [FormDesignComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -18,7 +20,6 @@ import {
     NgxMaskDirective,
     NgxMaskPipe,
   ],
-  exports: [FormComponent],
   providers: [provideEnvironmentNgxMask()],
 })
-export class FormModule {}
+export class FormDesignModule {}

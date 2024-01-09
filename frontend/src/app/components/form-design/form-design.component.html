@@ -123,9 +123,9 @@
         *ngFor="let footer of formConfig.footer"
         class="formComponent-form-footer"
         [ngClass]="{
-        'footer-with-full-width': footer.fullWidth,
-        'footer-with-two-columns': footer.twoColumns,
-        }"
+          'footer-with-full-width': footer.fullWidth,
+          'footer-with-two-columns': footer.twoColumns,
+          }"
       >
         <div *ngFor="let button of footer.actions">
           <div *ngIf="button.type === 'ghost'">
