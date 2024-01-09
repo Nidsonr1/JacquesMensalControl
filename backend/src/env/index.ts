@@ -7,7 +7,8 @@ const envSchema = z.object({
   DB_PASSWORD: z.coerce.string(),
   DB_DATABASE: z.coerce.string(),
   DB_PORT: z.coerce.number(),
-  API_PORT: z.coerce.number()
+  API_PORT: z.coerce.number(),
+  ACCESS_KEY: z.coerce.string(),
 });
 
 const _env = envSchema.safeParse(process.env);

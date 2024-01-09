@@ -1,23 +1,31 @@
 import { Replace } from "@helpers/replace";
 import { randomUUID } from "crypto";
 
-
 export interface UsersProps {
   name: string;
   email: string;
+  password: string;
+  cim: string;
   phone: string;
-  createdAt: Date
+  lodgeId: string;
+  roleId: string;
+  createdAt: Date;
 }
 
 export class User {
   private _id: string;
   private props: UsersProps;
 
-
-  constructor(props: Replace<UsersProps, {createdAt?: Date}>, id?: string) {
+  constructor(props: Replace<UsersProps, {
+    createdAt?: Date, 
+    lodgeId: string, 
+    roleId: string
+  }>, id?: string) {
     this._id = id ?? randomUUID();
     this.props = {
       ...props,
+      lodgeId: props.lodgeId,
+      roleId: props.roleId,
       createdAt: props.createdAt ?? new Date()
     }
   }
@@ -42,6 +50,22 @@ export class User {
     return this.props.email
   }
 
+  public set password(password: string) {
+    this.props.password = password
+  }
+
+  public get password(): string {
+    return this.props.password
+  }
+
+  public set cim(cim: string) {
+    this.props.cim = cim
+  }
+
+  public get cim(): string {
+    return this.props.cim
+  }
+
   public set phone(phone: string) {
     this.props.phone = phone
   }
@@ -53,4 +77,12 @@ export class User {
   public get createdAt(): Date {
 		return this.props.createdAt;
 	}
+
+  public get lodgeId(): string {
+    return this.props.lodgeId
+  }
+
+  public get roleId(): string {
+    return this.props.roleId
+  }
 }

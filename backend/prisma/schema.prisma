@@ -13,6 +13,8 @@ datasource db {
 model Lodges {
   id        String   @id @default(uuid())
   name      String
+  colors    String[]
+  logo      String
   createdAt DateTime @default(now())
 
   users Users[]
@@ -21,29 +23,22 @@ model Lodges {
 model Users {
   id        String   @id @default(uuid())
   name      String
+  password  String
+  cim       String
   email     String
   phone     String
   createdAt DateTime @default(now())
 
-  Lodges   Lodges?    @relation(fields: [lodgesId], references: [id])
-  lodgesId String?
-  UserRole UserRole[]
+  Lodges   Lodges @relation(fields: [lodgesId], references: [id])
+  lodgesId String
+
+  Roles  Roles  @relation(fields: [roleId], references: [id])
+  roleId String
 }
 
 model Roles {
   id        String   @id @default(uuid())
   name      String
   createdAt DateTime @default(now())
-
-  UserRole UserRole[]
-}
-
-model UserRole {
-  user   Users  @relation(fields: [userId], references: [id])
-  userId String
-
-  role   Roles  @relation(fields: [roleId], references: [id])
-  roleId String
-
-  @@id([userId, roleId])
+  Users     Users[]
 }

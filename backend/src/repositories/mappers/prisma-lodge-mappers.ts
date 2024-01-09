@@ -7,6 +7,8 @@ export class PrismaLodgeMapper {
     return {
       id: lodge.id,
       name: lodge.name,
+      colors: lodge.colors,
+      logo: lodge.logo,
       createdAt: lodge.createdAt
     }
   }
@@ -15,6 +17,8 @@ export class PrismaLodgeMapper {
     return new Lodge(
       {
         name: lodge.name,
+        colors: lodge.colors,
+        logo: lodge.logo,
         createdAt: lodge.createdAt
       },
       lodge.id
