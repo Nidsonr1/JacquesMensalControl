@@ -5,7 +5,7 @@ export const registerUserSchema = z.object({
   cim: z.string(),
   email: z.string(),
   phone: z.string(),
-  roleId: z.string(),
+  roleId: z.string().nullable(),
   lodgeId: z.string()
 });
 
