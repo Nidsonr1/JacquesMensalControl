@@ -1,0 +1,17 @@
+<div class="page">
+  <div class="page-content">
+    <div class="page-content-image">
+      <img src="assets/svg/finance_app.svg" width="300" />
+    </div>
+    <div class="page-content-form">
+      <div class="page-content-form-greeting">
+        <h3>Bem vindo(a)</h3>
+        <p>Preencha os campos abaixo apara entrar no sistema</p>
+      </div>
+      <jmc-form-design
+        (formEventToSubmit)="login($event)"
+        [formConfig]="loginForm"
+      ></jmc-form-design>
+    </div>
+  </div>
+</div>

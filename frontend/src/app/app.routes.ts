@@ -1,23 +1,34 @@
 import { Routes } from '@angular/router';
-import { RegisterBrotherComponent } from './pages';
+import { LoginComponent, RegisterBrotherComponent } from './pages';
 import { RegisterLodgeComponent } from './pages/register-lodge/register-lodge.component';
+import { PagesComponent } from './pages/pages.component';
 
 export const routes: Routes = [
   {
-    path: 'cadastro-loja',
-    component: RegisterLodgeComponent,
-  },
-  {
-    path: 'cadastro-irmão',
-    component: RegisterBrotherComponent,
+    path: 'entrar',
+    component: LoginComponent,
   },
   {
     path: '',
-    redirectTo: 'cadastro-irmão',
+    component: PagesComponent,
+    children: [
+      {
+        path: 'cadastro-loja',
+        component: RegisterLodgeComponent,
+      },
+      {
+        path: 'cadastro-irmão',
+        component: RegisterBrotherComponent,
+      },
+    ],
+  },
+  {
+    path: '',
+    redirectTo: 'entrar',
     pathMatch: 'full',
   },
   {
     path: '**',
-    redirectTo: 'cadastro-irmão',
+    redirectTo: 'entrar',
   },
 ];
