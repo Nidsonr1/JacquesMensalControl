@@ -12,4 +12,8 @@ export class PagesComponent {
   public changePage(page: string) {
     this.router.navigate([page]);
   }
+
+  public logout(): void {
+    this.router.navigate(['/entrar']);
+  }
 }

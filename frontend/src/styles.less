@@ -71,6 +71,7 @@ button {
 
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.2rem;
 
   &:hover {
@@ -117,17 +118,11 @@ textarea {
   font-size: 1rem;
   color: @text-dark;
 
-  background-color: @background-light;
+  background-color: @background-transparent;
   border: 1px solid #e7e5df;
   border-radius: @border-radius;
 
   padding: 0.5rem 1rem;
-
-  transition: all 0.2s ease-in-out;
-
-  &:focus {
-    background-color: @background-light;
-  }
 
   &:disabled {
     color: @text-disabled;
@@ -146,18 +141,12 @@ select {
   font-size: 1rem;
   color: @text-dark;
 
-  background-color: @background-light;
+  background-color: @background-transparent;
   border: 1px solid #e7e5df;
   border-radius: @border-radius;
 
   padding: 0.5rem 1rem;
   cursor: pointer;
-
-  transition: all 0.2s ease-in-out;
-
-  &:focus {
-    background-color: @background-light;
-  }
 
   &:disabled {
     color: @text-disabled;

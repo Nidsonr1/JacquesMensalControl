@@ -3,6 +3,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 export interface FormDesignConfig {
+  autocomplete?: 'on' | 'off';
   fields: FormField[];
   footer?: FormFooter[];
 }

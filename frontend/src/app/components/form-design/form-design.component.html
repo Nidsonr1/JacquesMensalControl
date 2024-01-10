@@ -1,5 +1,9 @@
 <div class="formComponent">
-  <form [formGroup]="formFields" class="formComponent-form">
+  <form
+    [autocomplete]="formConfig.autocomplete ? formConfig.autocomplete : 'off'"
+    [formGroup]="formFields"
+    class="formComponent-form"
+  >
     <!-- Input -->
     <div *ngFor="let field of formConfig.fields">
       <!-- Type: text -->
