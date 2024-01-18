@@ -14,5 +14,5 @@ const uploadFile = multer({
 const registerLodgeController = new RegisterLodgeController()
 const listLodgeController = new ListLodgesController()
 
-lodgesRoutes.post('/', uploadFile.single('file'), registerLodgeController.handle);
-lodgesRoutes.get('/', listLodgeController.handle);
+lodgesRoutes.post('/register', uploadFile.single('file'), registerLodgeController.handle);
+lodgesRoutes.get('/list', listLodgeController.handle);
