@@ -4,10 +4,10 @@ import { Router } from "express";
 
 
 
-export const userRoutes = Router();
+export const authRoutes = Router();
 
 const registerUserController = new RegisterUserController()
 const loginUserController = new LoginUserController()
 
-userRoutes.post('/register', registerUserController.handle);
-userRoutes.post('/login', loginUserController.handle);
+authRoutes.post('/register', registerUserController.handle);
+authRoutes.post('/login', loginUserController.handle);
