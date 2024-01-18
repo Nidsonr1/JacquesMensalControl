@@ -9,5 +9,5 @@ export const userRoutes = Router();
 const registerUserController = new RegisterUserController()
 const loginUserController = new LoginUserController()
 
-userRoutes.post('/', registerUserController.handle);
+userRoutes.post('/register', registerUserController.handle);
 userRoutes.post('/login', loginUserController.handle);
