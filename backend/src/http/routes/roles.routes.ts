@@ -9,5 +9,5 @@ const registerRolesController = new RegisterRoleController()
 const listRolesController = new ListRolesController()
 
 
-rolesRoutes.post('/', registerRolesController.handle);
-rolesRoutes.get('/', listRolesController.handle);
+rolesRoutes.post('/register', registerRolesController.handle);
+rolesRoutes.get('/list', listRolesController.handle);
