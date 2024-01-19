@@ -1,9 +1,12 @@
-import { ListLodgesController } from "@controllers/lodge/list-lodges-controller";
-import { RegisterLodgeController } from "@controllers/lodge/register-lodge-controller";
+import multer from "multer";
 import { Router } from "express";
 
+import { can } from "middlewares/permission";
 import { storage } from "middlewares/upload";
-import multer from "multer";
+import { EnsureAuthenticated } from "middlewares/ensure-authenticated";
+
+import { ListLodgesController } from "@controllers/lodge/list-lodges-controller";
+import { RegisterLodgeController } from "@controllers/lodge/register-lodge-controller";
 
 
 export const lodgesRoutes = Router();
@@ -14,5 +17,12 @@ const uploadFile = multer({
 const registerLodgeController = new RegisterLodgeController()
 const listLodgeController = new ListLodgesController()
 
-lodgesRoutes.post('/register', uploadFile.single('file'), registerLodgeController.handle);
+lodgesRoutes.post(
+  '/register', 
+  EnsureAuthenticated,
+  can(['admin']), 
+  uploadFile.single('file'), 
+  registerLodgeController.handle
+);
+
 lodgesRoutes.get('/list', listLodgeController.handle);

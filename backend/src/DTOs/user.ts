@@ -1,6 +1,3 @@
-import { Lodges } from "@prisma/client";
-import { RoleRepository } from "@repositories/role-repository";
-
 
 export interface IRegisterUserRequest {
   name: string;
@@ -42,4 +39,15 @@ export interface ILoginToDomain {
   id: string;
   name: string;
 
+}
+
+export interface IFindByIdResponse {
+  id: string;
+  name: string;
+  cim: string;
+  email: string;
+  phone: string;
+  Roles: {
+    name: string
+  } | null
 }

@@ -30,3 +30,9 @@ export class NotFound extends ApiErrors {
     super(`${name} não encontrado`, 404)
   }
 }
+
+export class Forbiden extends ApiErrors {
+  constructor() {
+    super('Sem permissão para esta ação', 403);
+  }
+}

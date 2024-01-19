@@ -1,5 +1,8 @@
 import { Router } from "express";
 
+import { can } from "middlewares/permission";
+import { EnsureAuthenticated } from "middlewares/ensure-authenticated";
+
 import { ListRolesController } from "@controllers/role/list-roles-controller";
 import { RegisterRoleController } from "@controllers/role/register-role-controller";
 
@@ -9,5 +12,15 @@ const registerRolesController = new RegisterRoleController()
 const listRolesController = new ListRolesController()
 
 
-rolesRoutes.post('/register', registerRolesController.handle);
-rolesRoutes.get('/list', listRolesController.handle);
+rolesRoutes.post(
+  '/register',
+  can(['admin']), 
+  EnsureAuthenticated,
+  registerRolesController.handle
+);
+rolesRoutes.get(
+  '/list',
+  EnsureAuthenticated,
+  can(['admin', 'tesourer']), 
+  listRolesController.handle
+);
